@@ -1,0 +1,25 @@
+name: Dockerrize
+#On donne un nom
+
+#On définit ce qui se passe quand nos fichiers changent
+on:
+	push:
+		branches: [master]
+
+jobs:
+#On lui dicte son travail
+
+	build:
+		runs-on: ubuntu-latest
+		
+		steps:
+		#les étapes !
+		-name: Get the source code
+		# Nom de l'étape
+		  uses: actions/checkout@v2
+		
+		-name: Build the Docker image
+		 run: docker built -t menu-express:latest --target production .
+		
+		-name: check if image is create
+		 run: docker image
