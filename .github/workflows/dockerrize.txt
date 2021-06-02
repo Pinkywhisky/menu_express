@@ -22,4 +22,4 @@ jobs:
 		 run: docker built -t menu-express:latest --target production .
 		
 		-name: check if image is create
-		 run: docker image
+		 run: docker push pinkywhisky/menu_express:1
