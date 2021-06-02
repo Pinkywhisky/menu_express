@@ -21,5 +21,8 @@ jobs:
 		-name: Build the Docker image
 		 run: docker built -t menu-express:latest .
 		
+		-name: Log into Docker Hub
+		 run: -u pinkywhisky -p Loukoum78
+		
 		-name: check if image is create
 		 run: docker push pinkywhisky/menu_express:1
