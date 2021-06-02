@@ -19,7 +19,7 @@ jobs:
 		  uses: actions/checkout@v2
 		
 		-name: Build the Docker image
-		 run: docker built -t menu-express:latest --target production .
+		 run: docker built -t menu-express:latest .
 		
 		-name: check if image is create
 		 run: docker push pinkywhisky/menu_express:1
