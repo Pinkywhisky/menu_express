@@ -11,14 +11,16 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 	mv composer.phar /usr/local/bin/composer
 
 WORKDIR /app/
-
 COPY composer.json composer.lock /app/
-
 #COPY . /app/
-
 RUN composer install
 
 FROM builder AS development
 CMD ["symfony", "server:start", "--no-tls"]
 EXPOSE 8000
 
+# En production on a pas besoin de modifier les fichiers, juste de les récupérer
+FROM builder AS production
+COPY . /app/
+CMD ["symfony", "server:start", "--no-tls"]
+EXPOSE 8000
